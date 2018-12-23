@@ -50,6 +50,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
+  
   ngOnInit() {
     this.layoutConf = this.layout.layoutConf;
     // this.layout.adjustLayout();
@@ -65,6 +66,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.layout.adjustLayout(event);
@@ -99,6 +101,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
       element.scrollTop = 0;
     }
   }
+  
   ngOnDestroy() {
     if(this.moduleLoaderSub) {
       this.moduleLoaderSub.unsubscribe()
@@ -110,6 +113,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit {
       this.routerEventSub.unsubscribe()
     }
   }
+  
   closeSidebar() {
     this.layout.publishLayoutChange({
       sidebarStyle: 'closed'

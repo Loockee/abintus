@@ -23,6 +23,7 @@ export class HeaderTopComponent implements OnInit, OnDestroy {
     code: 'es',
   }]
   @Input() notificPanel;
+  
   constructor(
     private layout: LayoutService,
     private navService: NavigationService,
@@ -53,18 +54,23 @@ export class HeaderTopComponent implements OnInit, OnDestroy {
       this.menuItems = mainItems
     })
   }
+  
   ngOnDestroy() {
     this.menuItemSub.unsubscribe()
   }
+  
   setLang() {
     this.translate.use(this.currentLang)
   }
+  
   changeTheme(theme) {
     this.themeService.changeTheme(this.renderer, theme);
   }
+  
   toggleNotific() {
     this.notificPanel.toggle();
   }
+  
   toggleSidenav() {
     if(this.layoutConf.sidebarStyle === 'closed') {
       return this.layout.publishLayoutChange({
